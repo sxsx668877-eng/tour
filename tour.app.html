@@ -9,100 +9,50 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --cream: #FAF8F3;
-    --sand: #E8E0D0;
-    --sand-dark: #D0C6B4;
-    --terra: #C4754A;
-    --terra-light: #F2DDD0;
-    --terra-dark: #8C4A28;
-    --ink: #1A1612;
-    --muted: #7A6E64;
-    --white: #FFFFFF;
-    --forest: #3D6B52;
-    --forest-light: #DFF0E6;
-    --sky: #4A7FA5;
-    --sky-light: #E3EEF5;
-    --gold: #C9973D;
-    --gold-light: #FDF3DC;
-    --danger: #B84040;
-    --danger-light: #FDEAEA;
-    --radius: 12px;
-    --radius-sm: 8px;
+    --cream: #FAF8F3; --sand: #E8E0D0; --sand-dark: #D0C6B4;
+    --terra: #C4754A; --terra-light: #F2DDD0; --terra-dark: #8C4A28;
+    --ink: #1A1612; --muted: #7A6E64; --white: #FFFFFF;
+    --forest: #3D6B52; --forest-light: #DFF0E6;
+    --sky: #4A7FA5; --sky-light: #E3EEF5;
+    --gold: #C9973D; --gold-light: #FDF3DC;
+    --danger: #B84040; --danger-light: #FDEAEA;
+    --radius: 12px; --radius-sm: 8px;
     --shadow: 0 2px 12px rgba(26,22,18,0.08);
     --shadow-lg: 0 8px 32px rgba(26,22,18,0.12);
   }
-
   html { font-size: 16px; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    min-height: 100vh;
-    min-height: 100dvh;
-  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
 
-  /* ── NAV ── */
-  .nav {
-    position: sticky; top: 0; z-index: 100;
-    background: var(--white);
-    border-bottom: 1px solid var(--sand);
-    padding: 0 1.25rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 56px;
-  }
+  .nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--sand); padding: 0 1.25rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
   .logo { font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: -0.4px; }
   .logo span { color: var(--terra); }
   .nav-tabs { display: flex; gap: 2px; }
-  .nav-tab {
-    padding: 6px 14px; border-radius: 20px; border: none;
-    background: transparent; font-size: 13px; font-family: 'DM Sans', sans-serif;
-    color: var(--muted); cursor: pointer; transition: all 0.18s; font-weight: 400;
-  }
+  .nav-tab { padding: 6px 14px; border-radius: 20px; border: none; background: transparent; font-size: 13px; font-family: 'DM Sans', sans-serif; color: var(--muted); cursor: pointer; transition: all 0.18s; }
   .nav-tab.active { background: var(--terra-light); color: var(--terra-dark); font-weight: 500; }
 
-  /* ── PAGES ── */
-  .page { display: none; padding: 1.25rem; max-width: 680px; margin: 0 auto; }
+  .page { display: none; padding: 1.25rem; max-width: 700px; margin: 0 auto; }
   .page.active { display: block; }
 
-  /* ── TRIP LIST ── */
-  .page-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 1.25rem;
-  }
+  .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
   .page-title { font-family: 'Playfair Display', serif; font-size: 22px; }
-  .btn-primary {
-    background: var(--terra); color: var(--white);
-    border: none; border-radius: var(--radius-sm);
-    padding: 9px 18px; font-size: 13px; font-weight: 500;
-    font-family: 'DM Sans', sans-serif; cursor: pointer;
-    transition: background 0.18s, transform 0.1s;
-    display: flex; align-items: center; gap: 6px;
-  }
+  .btn-primary { background: var(--terra); color: var(--white); border: none; border-radius: var(--radius-sm); padding: 9px 18px; font-size: 13px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; display: flex; align-items: center; gap: 6px; }
   .btn-primary:hover { background: var(--terra-dark); }
   .btn-primary:active { transform: scale(0.97); }
+  .btn-primary.full { flex: 2; justify-content: center; }
 
-  .empty-state {
-    text-align: center; padding: 4rem 2rem;
-    color: var(--muted);
-  }
-  .empty-icon { font-size: 52px; margin-bottom: 1rem; }
+  .empty-state { text-align: center; padding: 4rem 2rem; color: var(--muted); }
+  .empty-icon { font-size: 48px; margin-bottom: 1rem; }
   .empty-title { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--ink); margin-bottom: 0.5rem; }
   .empty-sub { font-size: 14px; line-height: 1.6; }
 
   .trip-grid { display: flex; flex-direction: column; gap: 12px; }
-  .trip-card {
-    background: var(--white); border: 1px solid var(--sand);
-    border-radius: var(--radius); padding: 1rem 1.25rem;
-    cursor: pointer; transition: all 0.18s;
-    display: flex; align-items: center; gap: 1rem;
-  }
+  .trip-card { background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius); padding: 1rem 1.25rem; cursor: pointer; transition: all 0.18s; display: flex; align-items: center; gap: 1rem; }
   .trip-card:hover { box-shadow: var(--shadow); border-color: var(--sand-dark); transform: translateY(-1px); }
-  .trip-emoji { font-size: 32px; width: 52px; height: 52px; background: var(--cream); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .trip-emoji { font-size: 28px; width: 48px; height: 48px; background: var(--cream); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid var(--sand); }
   .trip-info { flex: 1; min-width: 0; }
   .trip-name { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
   .trip-meta { font-size: 12px; color: var(--muted); }
@@ -111,215 +61,109 @@
   .badge-terra { background: var(--terra-light); color: var(--terra-dark); }
   .badge-sky { background: var(--sky-light); color: #2D5A7A; }
   .badge-forest { background: var(--forest-light); color: #265040; }
-  .badge-gold { background: var(--gold-light); color: #7A5A1A; }
   .trip-arrow { color: var(--muted); font-size: 18px; }
 
-  /* ── MODAL ── */
-  .modal-overlay {
-    display: none; position: fixed; inset: 0; z-index: 200;
-    background: rgba(26,22,18,0.5); padding: 1rem;
-    align-items: flex-end; justify-content: center;
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(26,22,18,0.5); padding: 1rem; align-items: flex-end; justify-content: center; }
   .modal-overlay.open { display: flex; }
   @media (min-width: 500px) { .modal-overlay { align-items: center; } }
-  .modal {
-    background: var(--white); border-radius: var(--radius);
-    width: 100%; max-width: 480px; max-height: 90vh;
-    overflow-y: auto; padding: 1.5rem;
-    box-shadow: var(--shadow-lg);
-  }
+  .modal { background: var(--white); border-radius: var(--radius); width: 100%; max-width: 500px; max-height: 92vh; overflow-y: auto; padding: 1.5rem; box-shadow: var(--shadow-lg); }
   .modal-title { font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 1.25rem; }
   .form-group { margin-bottom: 1rem; }
   .form-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); font-weight: 500; margin-bottom: 5px; display: block; }
-  .form-input, .form-select, .form-textarea {
-    width: 100%; padding: 10px 12px; border: 1px solid var(--sand);
-    border-radius: var(--radius-sm); font-size: 14px;
-    font-family: 'DM Sans', sans-serif; color: var(--ink);
-    background: var(--white); transition: border-color 0.18s;
-    outline: none;
-  }
-  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--terra); }
-  .form-textarea { resize: vertical; min-height: 80px; }
+  .form-input, .form-textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--sand); border-radius: var(--radius-sm); font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--ink); background: var(--white); transition: border-color 0.18s; outline: none; }
+  .form-input:focus, .form-textarea:focus { border-color: var(--terra); }
+  .form-textarea { resize: vertical; min-height: 70px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .form-hint { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
   .modal-actions { display: flex; gap: 10px; margin-top: 1.25rem; }
-  .btn-secondary {
-    flex: 1; padding: 10px; border-radius: var(--radius-sm);
-    border: 1px solid var(--sand); background: transparent;
-    font-size: 14px; font-family: 'DM Sans', sans-serif;
-    color: var(--muted); cursor: pointer; transition: all 0.18s;
-  }
+  .btn-secondary { flex: 1; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--sand); background: transparent; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--muted); cursor: pointer; transition: all 0.18s; }
   .btn-secondary:hover { background: var(--cream); }
-  .btn-primary.full { flex: 2; justify-content: center; }
 
-  .emoji-picker { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
-  .emoji-btn {
-    width: 38px; height: 38px; border-radius: var(--radius-sm);
-    border: 1px solid var(--sand); background: var(--cream);
-    font-size: 18px; cursor: pointer; transition: all 0.15s;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .emoji-btn:hover, .emoji-btn.selected { border-color: var(--terra); background: var(--terra-light); }
-
-  /* ── TRIP DETAIL ── */
-  .back-btn {
-    display: flex; align-items: center; gap: 6px;
-    color: var(--muted); font-size: 13px; cursor: pointer;
-    margin-bottom: 1.25rem; background: none; border: none;
-    font-family: 'DM Sans', sans-serif; padding: 0;
-    transition: color 0.18s;
-  }
+  .back-btn { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; cursor: pointer; margin-bottom: 1.25rem; background: none; border: none; font-family: 'DM Sans', sans-serif; padding: 0; transition: color 0.18s; }
   .back-btn:hover { color: var(--terra); }
 
-  .trip-hero {
-    background: var(--white); border: 1px solid var(--sand);
-    border-radius: var(--radius); padding: 1.25rem;
-    margin-bottom: 1.25rem;
-    display: flex; align-items: flex-start; gap: 1rem;
-  }
-  .hero-emoji { font-size: 40px; }
+  .trip-hero { background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.25rem; display: flex; align-items: flex-start; gap: 1rem; }
+  .hero-emoji { font-size: 36px; }
   .hero-info { flex: 1; }
   .hero-name { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 4px; }
-  .hero-meta { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
-  .hero-actions { display: flex; gap: 8px; }
-  .btn-icon {
-    padding: 6px 12px; border-radius: var(--radius-sm);
-    border: 1px solid var(--sand); background: transparent;
-    font-size: 12px; color: var(--muted); cursor: pointer;
-    font-family: 'DM Sans', sans-serif; transition: all 0.18s;
-    display: flex; align-items: center; gap: 4px;
-  }
+  .hero-meta { font-size: 13px; color: var(--muted); margin-bottom: 3px; }
+  .hero-actions { display: flex; gap: 8px; margin-top: 10px; }
+  .btn-icon { padding: 6px 12px; border-radius: var(--radius-sm); border: 1px solid var(--sand); background: transparent; font-size: 12px; color: var(--muted); cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.18s; display: flex; align-items: center; gap: 4px; }
   .btn-icon:hover { border-color: var(--sand-dark); color: var(--ink); }
   .btn-icon.danger:hover { border-color: var(--danger); color: var(--danger); background: var(--danger-light); }
 
   .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.25rem; }
-  .stat-card {
-    background: var(--white); border: 1px solid var(--sand);
-    border-radius: var(--radius-sm); padding: 12px;
-    text-align: center;
-  }
+  .stat-card { background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius-sm); padding: 12px; text-align: center; }
   .stat-num { font-family: 'Playfair Display', serif; font-size: 22px; }
   .stat-lbl { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
-  .section-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 0.75rem;
-  }
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
   .section-title-sm { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 500; }
-  .btn-add {
-    padding: 5px 12px; border-radius: 20px;
-    border: 1px dashed var(--sand-dark); background: transparent;
-    font-size: 12px; color: var(--muted); cursor: pointer;
-    font-family: 'DM Sans', sans-serif; transition: all 0.18s;
-  }
+  .btn-add { padding: 5px 12px; border-radius: 20px; border: 1px dashed var(--sand-dark); background: transparent; font-size: 12px; color: var(--muted); cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.18s; }
   .btn-add:hover { border-color: var(--terra); color: var(--terra); background: var(--terra-light); }
 
-  .days-list { display: flex; flex-direction: column; gap: 12px; }
-  .day-card {
-    background: var(--white); border: 1px solid var(--sand);
-    border-radius: var(--radius); overflow: hidden;
-  }
-  .day-header {
-    padding: 10px 16px; background: var(--cream);
-    border-bottom: 1px solid var(--sand);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .day-num-badge {
-    width: 26px; height: 26px; border-radius: 50%;
-    background: var(--terra); color: var(--white);
-    font-size: 11px; font-weight: 600;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
+  .days-list { display: flex; flex-direction: column; gap: 14px; }
+  .day-card { background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius); overflow: hidden; }
+  .day-header { padding: 10px 16px; background: var(--cream); border-bottom: 1px solid var(--sand); display: flex; align-items: center; gap: 10px; }
+  .day-num-badge { width: 26px; height: 26px; border-radius: 50%; background: var(--terra); color: var(--white); font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .day-title-text { font-size: 14px; font-weight: 500; flex: 1; }
   .day-date-text { font-size: 12px; color: var(--muted); }
   .day-actions { display: flex; gap: 6px; }
-  .day-action-btn {
-    width: 26px; height: 26px; border-radius: 6px;
-    border: 1px solid var(--sand); background: var(--white);
-    font-size: 13px; cursor: pointer; display: flex;
-    align-items: center; justify-content: center;
-    transition: all 0.15s; color: var(--muted);
-  }
+  .day-action-btn { width: 26px; height: 26px; border-radius: 6px; border: 1px solid var(--sand); background: var(--white); font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; color: var(--muted); }
   .day-action-btn:hover { border-color: var(--sand-dark); color: var(--ink); }
   .day-action-btn.del:hover { border-color: var(--danger); color: var(--danger); background: var(--danger-light); }
 
-  .activities { padding: 0; }
-  .activity-item {
-    padding: 10px 16px; border-bottom: 1px solid var(--cream);
-    display: flex; align-items: flex-start; gap: 10px;
-  }
-  .activity-item:last-child { border-bottom: none; }
-  .activity-time { font-size: 11px; color: var(--muted); min-width: 38px; padding-top: 2px; }
-  .activity-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  /* ITINERARY TABLE */
+  .itin-wrap { overflow-x: auto; }
+  .itin-table { width: 100%; border-collapse: collapse; min-width: 360px; }
+  .itin-table thead tr { background: var(--cream); }
+  .itin-table th { padding: 7px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); font-weight: 500; text-align: left; border-bottom: 1px solid var(--sand); white-space: nowrap; }
+  .itin-table td { padding: 10px 12px; font-size: 13px; border-bottom: 1px solid var(--cream); vertical-align: top; }
+  .itin-table tr:last-child td { border-bottom: none; }
+  .itin-table tr:hover td { background: #FDFCF9; }
+  .time-cell { color: var(--muted); font-size: 12px; white-space: nowrap; width: 52px; padding-top: 12px; }
+  .place-cell { min-width: 130px; }
+  .place-name { font-weight: 500; display: flex; align-items: center; gap: 6px; }
+  .map-link { display: inline-flex; align-items: center; gap: 3px; color: var(--sky); font-size: 11px; text-decoration: none; margin-top: 4px; }
+  .map-link:hover { color: var(--terra); text-decoration: underline; }
+  .note-text { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .cost-col { white-space: nowrap; text-align: right; }
+  .cost-num { font-size: 12px; color: var(--terra-dark); font-weight: 500; }
+  .act-btn-group { display: flex; gap: 4px; justify-content: flex-end; margin-top: 5px; }
+  .act-btn { width: 24px; height: 24px; border-radius: 5px; border: 1px solid var(--sand); background: transparent; font-size: 11px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--muted); transition: all 0.15s; }
+  .act-btn:hover { border-color: var(--sand-dark); color: var(--ink); }
+  .act-btn.del:hover { border-color: var(--danger); color: var(--danger); background: var(--danger-light); }
+  .empty-day { padding: 1.5rem; text-align: center; color: var(--muted); font-size: 13px; }
+  .type-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
   .dot-sight { background: var(--terra); }
   .dot-food { background: var(--gold); }
   .dot-transit { background: var(--sky); }
   .dot-hotel { background: var(--forest); }
   .dot-other { background: var(--muted); }
-  .activity-body { flex: 1; min-width: 0; }
-  .activity-name { font-size: 13px; font-weight: 500; }
-  .activity-note { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
-  .activity-cost { font-size: 11px; color: var(--terra-dark); margin-top: 2px; font-weight: 500; }
-  .activity-btns { display: flex; gap: 4px; flex-shrink: 0; }
-  .act-btn {
-    width: 24px; height: 24px; border-radius: 5px;
-    border: 1px solid var(--sand); background: transparent;
-    font-size: 11px; cursor: pointer; display: flex;
-    align-items: center; justify-content: center;
-    color: var(--muted); transition: all 0.15s;
-  }
-  .act-btn:hover { border-color: var(--sand-dark); color: var(--ink); }
-  .act-btn.del:hover { border-color: var(--danger); color: var(--danger); background: var(--danger-light); }
-
-  .empty-day { padding: 1.5rem; text-align: center; color: var(--muted); font-size: 13px; }
 
   .type-dot-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
-  .type-option {
-    display: flex; align-items: center; gap: 6px;
-    padding: 6px 12px; border-radius: 20px;
-    border: 1px solid var(--sand); cursor: pointer;
-    font-size: 12px; color: var(--muted); transition: all 0.15s;
-    background: var(--white);
-  }
+  .type-option { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 20px; border: 1px solid var(--sand); cursor: pointer; font-size: 12px; color: var(--muted); transition: all 0.15s; background: var(--white); }
   .type-option.selected { border-color: var(--terra); background: var(--terra-light); color: var(--terra-dark); font-weight: 500; }
-  .type-dot-sm { width: 8px; height: 8px; border-radius: 50%; }
 
-  /* ── TIPS ── */
-  .tips-section { margin-top: 1.25rem; }
-  .tips-box { background: var(--terra-light); border-radius: var(--radius); padding: 1rem 1.25rem; }
-  .tips-title { font-size: 12px; font-weight: 600; color: var(--terra-dark); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
-  .tip-item { font-size: 13px; color: var(--terra-dark); padding: 3px 0; line-height: 1.6; }
-
-  /* ── BUDGET PAGE ── */
-  .budget-summary {
-    background: var(--white); border: 1px solid var(--sand);
-    border-radius: var(--radius); padding: 1.25rem;
-    margin-bottom: 1.25rem;
-  }
+  .budget-summary { background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.25rem; }
   .budget-big { font-family: 'Playfair Display', serif; font-size: 36px; margin: 0.5rem 0; }
   .budget-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
   .progress-bar { height: 8px; background: var(--sand); border-radius: 4px; overflow: hidden; margin: 12px 0; }
   .progress-fill { height: 100%; border-radius: 4px; background: var(--terra); transition: width 0.4s; }
   .budget-sub { font-size: 13px; color: var(--muted); }
-
   .cost-breakdown { display: flex; flex-direction: column; gap: 8px; }
-  .cost-row {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 10px 14px; background: var(--white);
-    border: 1px solid var(--sand); border-radius: var(--radius-sm);
-  }
+  .cost-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.15s; }
+  .cost-row:hover { border-color: var(--sand-dark); }
   .cost-row-left { display: flex; align-items: center; gap: 8px; font-size: 13px; }
   .cost-row-right { font-size: 13px; font-weight: 500; color: var(--terra-dark); }
 
-  /* ── SCROLLBAR ── */
+  .tips-box { background: var(--terra-light); border-radius: var(--radius); padding: 1rem 1.25rem; margin-top: 1.25rem; }
+  .tips-title { font-size: 12px; font-weight: 600; color: var(--terra-dark); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+  .tip-item { font-size: 13px; color: var(--terra-dark); padding: 3px 0; line-height: 1.6; }
+
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 3px; }
-
-  @media (max-width: 400px) {
-    .stats-row { grid-template-columns: 1fr 1fr; }
-    .stat-card:last-child { grid-column: span 2; }
-  }
 </style>
 </head>
 <body>
@@ -332,7 +176,6 @@
   </div>
 </nav>
 
-<!-- TRIPS PAGE -->
 <div class="page active" id="page-trips">
   <div class="page-header">
     <div class="page-title">我的旅程</div>
@@ -341,21 +184,17 @@
   <div id="trip-list"></div>
 </div>
 
-<!-- DETAIL PAGE -->
 <div class="page" id="page-detail">
   <button class="back-btn" onclick="showPage('trips')">← 返回所有旅程</button>
   <div id="detail-content"></div>
 </div>
 
-<!-- BUDGET PAGE -->
 <div class="page" id="page-budget">
-  <div class="page-header">
-    <div class="page-title">預算總覽</div>
-  </div>
+  <div class="page-header"><div class="page-title">預算總覽</div></div>
   <div id="budget-content"></div>
 </div>
 
-<!-- NEW TRIP MODAL -->
+<!-- TRIP MODAL -->
 <div class="modal-overlay" id="modal-trip">
   <div class="modal">
     <div class="modal-title" id="modal-trip-title">新增旅程</div>
@@ -364,10 +203,9 @@
       <input class="form-input" id="trip-dest" placeholder="例如：日本東京" />
     </div>
     <div class="form-group">
-      <label class="form-label">選擇圖示</label>
-      <div class="emoji-picker" id="emoji-picker">
-        🗼 🏛️ 🗽 🌿 🏖️ 🏔️ 🌸 🎎 🍜 🍕 🥐 🌺 🏯 🎡 🌊 🗺️
-      </div>
+      <label class="form-label">旅程圖示（Emoji）</label>
+      <input class="form-input" id="trip-emoji" placeholder="🗺️" style="font-size:20px; width:70px;" />
+      <div class="form-hint">輸入任何 emoji，例如 🗼 🏖️ 🌸 🎌 🏔️ 🍜</div>
     </div>
     <div class="form-row">
       <div class="form-group">
@@ -394,13 +232,13 @@
   </div>
 </div>
 
-<!-- NEW DAY MODAL -->
+<!-- DAY MODAL -->
 <div class="modal-overlay" id="modal-day">
   <div class="modal">
     <div class="modal-title">新增行程天</div>
     <div class="form-group">
       <label class="form-label">主題（選填）</label>
-      <input class="form-input" id="day-theme" placeholder="例如：文化深度遊" />
+      <input class="form-input" id="day-theme" placeholder="例如：京都文化之旅、大阪美食探索" />
     </div>
     <div class="form-group">
       <label class="form-label">日期（選填）</label>
@@ -413,18 +251,18 @@
   </div>
 </div>
 
-<!-- NEW ACTIVITY MODAL -->
+<!-- ACTIVITY MODAL -->
 <div class="modal-overlay" id="modal-act">
   <div class="modal">
-    <div class="modal-title" id="modal-act-title">新增活動</div>
+    <div class="modal-title" id="modal-act-title">新增行程站</div>
     <div class="form-group">
       <label class="form-label">類型</label>
       <div class="type-dot-row" id="type-picker">
-        <div class="type-option selected" data-type="sight" onclick="selectType(this)"><span class="type-dot-sm dot-sight"></span>景點</div>
-        <div class="type-option" data-type="food" onclick="selectType(this)"><span class="type-dot-sm dot-food"></span>美食</div>
-        <div class="type-option" data-type="transit" onclick="selectType(this)"><span class="type-dot-sm dot-transit"></span>交通</div>
-        <div class="type-option" data-type="hotel" onclick="selectType(this)"><span class="type-dot-sm dot-hotel"></span>住宿</div>
-        <div class="type-option" data-type="other" onclick="selectType(this)"><span class="type-dot-sm dot-other"></span>其他</div>
+        <div class="type-option selected" data-type="sight" onclick="selectType(this)"><span class="type-dot dot-sight"></span>景點</div>
+        <div class="type-option" data-type="food" onclick="selectType(this)"><span class="type-dot dot-food"></span>美食</div>
+        <div class="type-option" data-type="transit" onclick="selectType(this)"><span class="type-dot dot-transit"></span>交通</div>
+        <div class="type-option" data-type="hotel" onclick="selectType(this)"><span class="type-dot dot-hotel"></span>住宿</div>
+        <div class="type-option" data-type="other" onclick="selectType(this)"><span class="type-dot dot-other"></span>其他</div>
       </div>
     </div>
     <div class="form-row">
@@ -438,12 +276,17 @@
       </div>
     </div>
     <div class="form-group">
-      <label class="form-label">名稱</label>
-      <input class="form-input" id="act-name" placeholder="例如：淺草寺" />
+      <label class="form-label">地點名稱</label>
+      <input class="form-input" id="act-name" placeholder="例如：淺草寺、築地市場" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Google Maps 連結（選填）</label>
+      <input class="form-input" id="act-mapurl" placeholder="https://maps.app.goo.gl/..." />
+      <div class="form-hint">Google Maps 找到地點 → 點「分享」→「複製連結」→ 貼上</div>
     </div>
     <div class="form-group">
       <label class="form-label">備註（選填）</label>
-      <input class="form-input" id="act-note" placeholder="開放時間、注意事項…" />
+      <input class="form-input" id="act-note" placeholder="開放時間、注意事項、預約連結…" />
     </div>
     <div class="modal-actions">
       <button class="btn-secondary" onclick="closeModal('modal-act')">取消</button>
@@ -453,262 +296,151 @@
 </div>
 
 <script>
-// ── STATE ──
 let state = JSON.parse(localStorage.getItem('wanderly') || '{"trips":[]}');
-let currentTripId = null;
-let editingTripId = null;
-let editingDayIdx = null;
-let editingActIdx = null;
-let selectedEmoji = '🗺️';
-let selectedType = 'sight';
-let currentDayIdxForAct = null;
+let currentTripId = null, editingTripId = null, editingActIdx = null;
+let selectedType = 'sight', currentDayIdxForAct = null;
 
 function save() { localStorage.setItem('wanderly', JSON.stringify(state)); }
 
-// ── PAGES ──
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
   const tabs = document.querySelectorAll('.nav-tab');
-  if (id === 'trips') tabs[0].classList.add('active');
-  if (id === 'budget') tabs[1].classList.add('active');
-
-  if (id === 'trips') renderTripList();
+  if (id === 'trips') { tabs[0].classList.add('active'); renderTripList(); }
+  if (id === 'budget') { tabs[1].classList.add('active'); renderBudget(); }
   if (id === 'detail' && currentTripId) renderDetail(currentTripId);
-  if (id === 'budget') renderBudget();
 }
 
-// ── MODALS ──
 function openModal(id) { document.getElementById(id).classList.add('open'); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 
-// ── EMOJI PICKER ──
-function initEmojiPicker() {
-  const picker = document.getElementById('emoji-picker');
-  const emojis = picker.textContent.trim().split(/\s+/);
-  picker.innerHTML = '';
-  emojis.forEach(e => {
-    const btn = document.createElement('button');
-    btn.className = 'emoji-btn' + (e === selectedEmoji ? ' selected' : '');
-    btn.textContent = e;
-    btn.onclick = () => {
-      document.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      selectedEmoji = e;
-    };
-    picker.appendChild(btn);
-  });
-}
-
-// ── TYPE PICKER ──
 function selectType(el) {
   document.querySelectorAll('.type-option').forEach(o => o.classList.remove('selected'));
   el.classList.add('selected');
   selectedType = el.dataset.type;
 }
 
-// ── TRIP CRUD ──
+// TRIP
 function openNewTrip() {
   editingTripId = null;
-  selectedEmoji = '🗺️';
   document.getElementById('modal-trip-title').textContent = '新增旅程';
-  document.getElementById('trip-dest').value = '';
-  document.getElementById('trip-start').value = '';
-  document.getElementById('trip-end').value = '';
-  document.getElementById('trip-budget').value = '';
-  document.getElementById('trip-note').value = '';
-  initEmojiPicker();
+  ['trip-dest','trip-start','trip-end','trip-budget','trip-note'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('trip-emoji').value = '🗺️';
   openModal('modal-trip');
 }
-
 function openEditTrip(id) {
   const t = state.trips.find(t => t.id === id);
   if (!t) return;
   editingTripId = id;
-  selectedEmoji = t.emoji || '🗺️';
   document.getElementById('modal-trip-title').textContent = '編輯旅程';
   document.getElementById('trip-dest').value = t.dest;
+  document.getElementById('trip-emoji').value = t.emoji || '🗺️';
   document.getElementById('trip-start').value = t.start || '';
   document.getElementById('trip-end').value = t.end || '';
   document.getElementById('trip-budget').value = t.budget || '';
   document.getElementById('trip-note').value = t.note || '';
-  initEmojiPicker();
   openModal('modal-trip');
 }
-
 function saveTrip() {
   const dest = document.getElementById('trip-dest').value.trim();
-  if (!dest) { alert('請輸入目的地！'); return; }
-  const data = {
-    dest,
-    emoji: selectedEmoji,
-    start: document.getElementById('trip-start').value,
-    end: document.getElementById('trip-end').value,
-    budget: parseInt(document.getElementById('trip-budget').value) || 0,
-    note: document.getElementById('trip-note').value.trim(),
-    days: []
-  };
-  if (editingTripId) {
-    const t = state.trips.find(t => t.id === editingTripId);
-    Object.assign(t, data);
-  } else {
-    data.id = Date.now().toString();
-    data.days = [];
-    state.trips.push(data);
-  }
-  save();
-  closeModal('modal-trip');
-  if (editingTripId) { renderDetail(editingTripId); } else { renderTripList(); }
+  if (!dest) { alert('請輸入目的地名稱！'); return; }
+  const data = { dest, emoji: document.getElementById('trip-emoji').value.trim() || '🗺️', start: document.getElementById('trip-start').value, end: document.getElementById('trip-end').value, budget: parseInt(document.getElementById('trip-budget').value) || 0, note: document.getElementById('trip-note').value.trim() };
+  if (editingTripId) { Object.assign(state.trips.find(t => t.id === editingTripId), data); }
+  else { data.id = Date.now().toString(); data.days = []; state.trips.push(data); }
+  save(); closeModal('modal-trip');
+  editingTripId ? renderDetail(editingTripId) : renderTripList();
 }
-
 function deleteTrip(id) {
   if (!confirm('確定要刪除這個旅程嗎？')) return;
   state.trips = state.trips.filter(t => t.id !== id);
-  save();
-  showPage('trips');
+  save(); showPage('trips');
 }
 
-// ── DAY CRUD ──
+// DAY
 function openNewDay() {
-  editingDayIdx = null;
   document.getElementById('day-theme').value = '';
   document.getElementById('day-date').value = '';
   openModal('modal-day');
 }
-
 function saveDay() {
   const trip = state.trips.find(t => t.id === currentTripId);
   if (!trip) return;
-  const data = {
-    theme: document.getElementById('day-theme').value.trim() || ('第 ' + (trip.days.length + 1) + ' 天'),
-    date: document.getElementById('day-date').value,
-    activities: []
-  };
-  if (editingDayIdx !== null) {
-    trip.days[editingDayIdx] = { ...trip.days[editingDayIdx], theme: data.theme, date: data.date };
-  } else {
-    trip.days.push(data);
-  }
-  save();
-  closeModal('modal-day');
-  renderDetail(currentTripId);
+  trip.days.push({ theme: document.getElementById('day-theme').value.trim() || ('第 ' + (trip.days.length + 1) + ' 天'), date: document.getElementById('day-date').value, activities: [] });
+  save(); closeModal('modal-day'); renderDetail(currentTripId);
 }
-
 function deleteDay(idx) {
-  if (!confirm('確定刪除此天？')) return;
-  const trip = state.trips.find(t => t.id === currentTripId);
-  trip.days.splice(idx, 1);
-  save();
-  renderDetail(currentTripId);
+  if (!confirm('確定刪除這一天？')) return;
+  state.trips.find(t => t.id === currentTripId).days.splice(idx, 1);
+  save(); renderDetail(currentTripId);
 }
 
-// ── ACTIVITY CRUD ──
+// ACTIVITY
 function openNewActivity(dayIdx) {
-  currentDayIdxForAct = dayIdx;
-  editingActIdx = null;
-  selectedType = 'sight';
-  document.getElementById('modal-act-title').textContent = '新增活動';
+  currentDayIdxForAct = dayIdx; editingActIdx = null; selectedType = 'sight';
+  document.getElementById('modal-act-title').textContent = '新增行程站';
+  ['act-cost','act-name','act-mapurl','act-note'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('act-time').value = '09:00';
-  document.getElementById('act-cost').value = '';
-  document.getElementById('act-name').value = '';
-  document.getElementById('act-note').value = '';
   document.querySelectorAll('.type-option').forEach(o => o.classList.remove('selected'));
   document.querySelector('.type-option[data-type="sight"]').classList.add('selected');
   openModal('modal-act');
 }
-
 function openEditActivity(dayIdx, actIdx) {
-  const trip = state.trips.find(t => t.id === currentTripId);
-  const act = trip.days[dayIdx].activities[actIdx];
-  currentDayIdxForAct = dayIdx;
-  editingActIdx = actIdx;
-  selectedType = act.type || 'sight';
-  document.getElementById('modal-act-title').textContent = '編輯活動';
+  const act = state.trips.find(t => t.id === currentTripId).days[dayIdx].activities[actIdx];
+  currentDayIdxForAct = dayIdx; editingActIdx = actIdx; selectedType = act.type || 'sight';
+  document.getElementById('modal-act-title').textContent = '編輯行程站';
   document.getElementById('act-time').value = act.time || '09:00';
   document.getElementById('act-cost').value = act.cost || '';
   document.getElementById('act-name').value = act.name || '';
+  document.getElementById('act-mapurl').value = act.mapurl || '';
   document.getElementById('act-note').value = act.note || '';
-  document.querySelectorAll('.type-option').forEach(o => {
-    o.classList.toggle('selected', o.dataset.type === selectedType);
-  });
+  document.querySelectorAll('.type-option').forEach(o => o.classList.toggle('selected', o.dataset.type === selectedType));
   openModal('modal-act');
 }
-
 function saveActivity() {
   const name = document.getElementById('act-name').value.trim();
-  if (!name) { alert('請輸入活動名稱！'); return; }
+  if (!name) { alert('請輸入地點名稱！'); return; }
   const trip = state.trips.find(t => t.id === currentTripId);
-  const act = {
-    type: selectedType,
-    time: document.getElementById('act-time').value,
-    cost: parseInt(document.getElementById('act-cost').value) || 0,
-    name,
-    note: document.getElementById('act-note').value.trim()
-  };
-  if (editingActIdx !== null) {
-    trip.days[currentDayIdxForAct].activities[editingActIdx] = act;
-  } else {
-    trip.days[currentDayIdxForAct].activities.push(act);
-    trip.days[currentDayIdxForAct].activities.sort((a, b) => a.time.localeCompare(b.time));
-  }
-  save();
-  closeModal('modal-act');
-  renderDetail(currentTripId);
+  const act = { type: selectedType, time: document.getElementById('act-time').value, cost: parseInt(document.getElementById('act-cost').value) || 0, name, mapurl: document.getElementById('act-mapurl').value.trim(), note: document.getElementById('act-note').value.trim() };
+  const acts = trip.days[currentDayIdxForAct].activities;
+  if (editingActIdx !== null) { acts[editingActIdx] = act; }
+  else { acts.push(act); acts.sort((a, b) => a.time.localeCompare(b.time)); }
+  save(); closeModal('modal-act'); renderDetail(currentTripId);
 }
-
 function deleteActivity(dayIdx, actIdx) {
-  const trip = state.trips.find(t => t.id === currentTripId);
-  trip.days[dayIdx].activities.splice(actIdx, 1);
-  save();
-  renderDetail(currentTripId);
+  state.trips.find(t => t.id === currentTripId).days[dayIdx].activities.splice(actIdx, 1);
+  save(); renderDetail(currentTripId);
 }
 
-// ── HELPERS ──
+// HELPERS
 function formatDate(str) {
   if (!str) return '';
-  const d = new Date(str + 'T00:00:00');
-  return d.toLocaleDateString('zh-TW', { month: 'short', day: 'numeric' });
+  return new Date(str + 'T00:00:00').toLocaleDateString('zh-TW', { month: 'short', day: 'numeric' });
 }
-function formatMoney(n) { return 'NT$' + n.toLocaleString(); }
-function tripDays(t) {
-  if (!t.start || !t.end) return t.days.length || 0;
-  return Math.max(1, Math.round((new Date(t.end) - new Date(t.start)) / 86400000));
-}
-function tripCost(t) {
-  return (t.days || []).reduce((s, d) => s + (d.activities || []).reduce((ss, a) => ss + (a.cost || 0), 0), 0);
-}
-function dotClass(type) {
-  return { sight: 'dot-sight', food: 'dot-food', transit: 'dot-transit', hotel: 'dot-hotel', other: 'dot-other' }[type] || 'dot-other';
-}
-function typeName(type) {
-  return { sight: '景點', food: '美食', transit: '交通', hotel: '住宿', other: '其他' }[type] || '';
-}
+function formatMoney(n) { return 'NT$' + (n || 0).toLocaleString(); }
+function tripDays(t) { return t.days ? t.days.length : 0; }
+function tripCost(t) { return (t.days||[]).reduce((s,d) => s + (d.activities||[]).reduce((ss,a) => ss+(a.cost||0),0), 0); }
+function dotClass(type) { return ({sight:'dot-sight',food:'dot-food',transit:'dot-transit',hotel:'dot-hotel',other:'dot-other'})[type]||'dot-other'; }
 
-// ── RENDER TRIPS ──
+// RENDER TRIP LIST
 function renderTripList() {
   const el = document.getElementById('trip-list');
   if (!state.trips.length) {
-    el.innerHTML = `<div class="empty-state">
-      <div class="empty-icon">🌍</div>
-      <div class="empty-title">還沒有旅程</div>
-      <div class="empty-sub">點擊右上角「新增旅程」<br>開始規劃你的下一趟冒險！</div>
-    </div>`;
+    el.innerHTML = `<div class="empty-state"><div class="empty-icon">🌍</div><div class="empty-title">還沒有旅程</div><div class="empty-sub">點擊「新增旅程」開始規劃你的第一趟旅程！</div></div>`;
     return;
   }
   el.innerHTML = `<div class="trip-grid">${state.trips.map(t => {
-    const cost = tripCost(t);
-    const days = tripDays(t);
-    const dateStr = t.start ? formatDate(t.start) + (t.end ? ' – ' + formatDate(t.end) : '') : '';
+    const cost = tripCost(t), days = tripDays(t);
+    const dateStr = t.start ? formatDate(t.start) + (t.end ? ' – ' + formatDate(t.end) : '') : '未設定日期';
     return `<div class="trip-card" onclick="openTrip('${t.id}')">
-      <div class="trip-emoji">${t.emoji || '🗺️'}</div>
+      <div class="trip-emoji">${t.emoji||'🗺️'}</div>
       <div class="trip-info">
         <div class="trip-name">${t.dest}</div>
-        <div class="trip-meta">${dateStr || '未設定日期'}</div>
+        <div class="trip-meta">${dateStr}</div>
         <div class="trip-badges">
-          <span class="badge badge-terra">${days} 天</span>
-          ${cost > 0 ? `<span class="badge badge-sky">${formatMoney(cost)}</span>` : ''}
-          ${t.budget > 0 ? `<span class="badge badge-forest">預算 ${formatMoney(t.budget)}</span>` : ''}
+          ${days?`<span class="badge badge-terra">${days} 天</span>`:''}
+          ${cost>0?`<span class="badge badge-sky">${formatMoney(cost)}</span>`:''}
+          ${t.budget>0?`<span class="badge badge-forest">預算 ${formatMoney(t.budget)}</span>`:''}
         </div>
       </div>
       <div class="trip-arrow">›</div>
@@ -716,154 +448,133 @@ function renderTripList() {
   }).join('')}</div>`;
 }
 
-// ── OPEN TRIP ──
-function openTrip(id) {
-  currentTripId = id;
-  showPage('detail');
-}
+function openTrip(id) { currentTripId = id; showPage('detail'); }
 
-// ── RENDER DETAIL ──
+// RENDER DETAIL
 function renderDetail(id) {
   const trip = state.trips.find(t => t.id === id);
   if (!trip) return;
-  const cost = tripCost(trip);
-  const days = tripDays(trip);
-  const actCount = (trip.days || []).reduce((s, d) => s + (d.activities || []).length, 0);
-  const dateStr = trip.start ? formatDate(trip.start) + (trip.end ? ' – ' + formatDate(trip.end) : '') : '未設定日期';
+  const cost = tripCost(trip), days = tripDays(trip);
+  const actCount = (trip.days||[]).reduce((s,d) => s+(d.activities||[]).length, 0);
+  const dateStr = trip.start ? formatDate(trip.start)+(trip.end?' – '+formatDate(trip.end):'') : '未設定日期';
 
   let html = `
   <div class="trip-hero">
-    <div class="hero-emoji">${trip.emoji || '🗺️'}</div>
+    <div class="hero-emoji">${trip.emoji||'🗺️'}</div>
     <div class="hero-info">
       <div class="hero-name">${trip.dest}</div>
       <div class="hero-meta">${dateStr}</div>
-      ${trip.note ? `<div class="hero-meta" style="margin-top:4px;font-style:italic;">${trip.note}</div>` : ''}
-      <div class="hero-actions" style="margin-top:10px;">
+      ${trip.note?`<div class="hero-meta" style="font-style:italic;">${trip.note}</div>`:''}
+      <div class="hero-actions">
         <button class="btn-icon" onclick="openEditTrip('${trip.id}')">✏️ 編輯</button>
         <button class="btn-icon danger" onclick="deleteTrip('${trip.id}')">🗑️ 刪除</button>
       </div>
     </div>
   </div>
-
   <div class="stats-row">
-    <div class="stat-card"><div class="stat-num">${days}</div><div class="stat-lbl">天數</div></div>
-    <div class="stat-card"><div class="stat-num">${actCount}</div><div class="stat-lbl">活動</div></div>
+    <div class="stat-card"><div class="stat-num">${days||'—'}</div><div class="stat-lbl">天數</div></div>
+    <div class="stat-card"><div class="stat-num">${actCount}</div><div class="stat-lbl">行程站</div></div>
     <div class="stat-card"><div class="stat-num">${formatMoney(cost)}</div><div class="stat-lbl">預估花費</div></div>
   </div>
-
-  ${trip.budget > 0 ? `<div class="budget-summary" style="padding:1rem 1.25rem;margin-bottom:1.25rem;">
+  ${trip.budget>0?`<div class="budget-summary" style="padding:1rem 1.25rem;margin-bottom:1.25rem;">
     <div class="budget-label">預算使用狀況</div>
-    <div class="progress-bar"><div class="progress-fill" style="width:${Math.min(100, Math.round(cost/trip.budget*100))}%;background:${cost > trip.budget ? 'var(--danger)' : 'var(--terra)'};"></div></div>
+    <div class="progress-bar"><div class="progress-fill" style="width:${Math.min(100,Math.round(cost/trip.budget*100))}%;background:${cost>trip.budget?'var(--danger)':'var(--terra)'};"></div></div>
     <div class="budget-sub">${formatMoney(cost)} / ${formatMoney(trip.budget)}（${Math.round(cost/trip.budget*100)}%）</div>
-  </div>` : ''}
-
+  </div>`:''}
   <div class="section-header">
     <div class="section-title-sm">每日行程</div>
     <button class="btn-add" onclick="openNewDay()">＋ 新增天數</button>
   </div>
-
   <div class="days-list">`;
 
-  (trip.days || []).forEach((day, di) => {
+  (trip.days||[]).forEach((day, di) => {
     html += `<div class="day-card">
       <div class="day-header">
-        <div class="day-num-badge">${di + 1}</div>
+        <div class="day-num-badge">${di+1}</div>
         <div class="day-title-text">${day.theme}</div>
-        ${day.date ? `<div class="day-date-text">${formatDate(day.date)}</div>` : ''}
+        ${day.date?`<div class="day-date-text">${formatDate(day.date)}</div>`:''}
         <div class="day-actions">
-          <button class="day-action-btn" onclick="openNewActivity(${di})" title="新增活動">＋</button>
+          <button class="day-action-btn" onclick="openNewActivity(${di})" title="新增行程站">＋</button>
           <button class="day-action-btn del" onclick="deleteDay(${di})" title="刪除此天">✕</button>
         </div>
-      </div>
-      <div class="activities">`;
+      </div>`;
 
     if (!day.activities || !day.activities.length) {
-      html += `<div class="empty-day">尚無活動 — 點擊 ＋ 新增</div>`;
+      html += `<div class="empty-day">尚無行程站 — 點擊 ＋ 新增地點</div>`;
     } else {
+      html += `<div class="itin-wrap"><table class="itin-table">
+        <thead><tr>
+          <th>時間</th>
+          <th>地點</th>
+          <th>備註</th>
+          <th style="text-align:right;">費用</th>
+        </tr></thead><tbody>`;
       day.activities.forEach((act, ai) => {
-        html += `<div class="activity-item">
-          <div class="activity-time">${act.time}</div>
-          <div class="activity-dot ${dotClass(act.type)}"></div>
-          <div class="activity-body">
-            <div class="activity-name">${act.name}</div>
-            ${act.note ? `<div class="activity-note">${act.note}</div>` : ''}
-            ${act.cost > 0 ? `<div class="activity-cost">${formatMoney(act.cost)}</div>` : ''}
-          </div>
-          <div class="activity-btns">
-            <button class="act-btn" onclick="openEditActivity(${di},${ai})" title="編輯">✏</button>
-            <button class="act-btn del" onclick="deleteActivity(${di},${ai})" title="刪除">✕</button>
-          </div>
-        </div>`;
+        html += `<tr>
+          <td class="time-cell">${act.time}</td>
+          <td class="place-cell">
+            <div class="place-name"><span class="type-dot ${dotClass(act.type)}"></span>${act.name}</div>
+            ${act.mapurl ? `<a class="map-link" href="${act.mapurl}" target="_blank" rel="noopener">📍 Google Maps</a>` : ''}
+          </td>
+          <td><div class="note-text">${act.note||'—'}</div></td>
+          <td class="cost-col">
+            <div class="cost-num">${act.cost>0?formatMoney(act.cost):'—'}</div>
+            <div class="act-btn-group">
+              <button class="act-btn" onclick="openEditActivity(${di},${ai})" title="編輯">✏</button>
+              <button class="act-btn del" onclick="deleteActivity(${di},${ai})" title="刪除">✕</button>
+            </div>
+          </td>
+        </tr>`;
       });
+      html += `</tbody></table></div>`;
     }
-    html += `</div></div>`;
+    html += `</div>`;
   });
 
-  if (!trip.days || !trip.days.length) {
-    html += `<div class="empty-state" style="padding:2rem;">
-      <div style="font-size:32px;">📅</div>
-      <div style="font-size:15px;font-weight:500;margin:8px 0;">還沒有行程天</div>
-      <div style="font-size:13px;color:var(--muted);">點擊「新增天數」開始規劃</div>
-    </div>`;
+  if (!trip.days||!trip.days.length) {
+    html += `<div class="empty-state" style="padding:2rem;"><div style="font-size:32px;">📅</div><div style="font-size:15px;font-weight:500;margin:8px 0;">還沒有行程天</div><div style="font-size:13px;color:var(--muted);">點擊「新增天數」開始規劃</div></div>`;
   }
 
   html += `</div>
-  <div class="tips-section">
-    <div class="tips-box">
-      <div class="tips-title">旅遊小提示</div>
-      <div class="tip-item">• 出發前記得確認簽證與護照效期</div>
-      <div class="tip-item">• 建議購買旅遊平安險</div>
-      <div class="tip-item">• 記錄緊急聯絡人與大使館電話</div>
-    </div>
+  <div class="tips-box">
+    <div class="tips-title">旅遊小提示</div>
+    <div class="tip-item">• 出發前確認護照效期至少六個月以上</div>
+    <div class="tip-item">• 建議購買旅遊平安險，出發前確認理賠範圍</div>
+    <div class="tip-item">• 台灣緊急聯絡電話：+886-800-085-095</div>
   </div>`;
 
   document.getElementById('detail-content').innerHTML = html;
 }
 
-// ── RENDER BUDGET ──
+// RENDER BUDGET
 function renderBudget() {
   const el = document.getElementById('budget-content');
   if (!state.trips.length) {
-    el.innerHTML = `<div class="empty-state">
-      <div class="empty-icon">💰</div>
-      <div class="empty-title">還沒有旅程</div>
-      <div class="empty-sub">新增旅程後，這裡會顯示預算統計。</div>
-    </div>`;
+    el.innerHTML = `<div class="empty-state"><div class="empty-icon">💰</div><div class="empty-title">還沒有旅程</div><div class="empty-sub">新增旅程後這裡會顯示預算統計。</div></div>`;
     return;
   }
-
-  const totalBudget = state.trips.reduce((s, t) => s + (t.budget || 0), 0);
-  const totalCost = state.trips.reduce((s, t) => s + tripCost(t), 0);
-  const pct = totalBudget > 0 ? Math.min(100, Math.round(totalCost / totalBudget * 100)) : 0;
-
+  const totalBudget = state.trips.reduce((s,t) => s+(t.budget||0), 0);
+  const totalCost = state.trips.reduce((s,t) => s+tripCost(t), 0);
+  const pct = totalBudget>0 ? Math.min(100,Math.round(totalCost/totalBudget*100)) : 0;
   let html = `<div class="budget-summary">
-    <div class="budget-label">總預估花費</div>
+    <div class="budget-label">所有旅程總花費</div>
     <div class="budget-big">${formatMoney(totalCost)}</div>
-    ${totalBudget > 0 ? `
-    <div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${totalCost > totalBudget ? 'var(--danger)' : 'var(--terra)'};"></div></div>
-    <div class="budget-sub">總預算 ${formatMoney(totalBudget)}（已用 ${pct}%）</div>` : ''}
+    ${totalBudget>0?`<div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${totalCost>totalBudget?'var(--danger)':'var(--terra)'};"></div></div>
+    <div class="budget-sub">總預算 ${formatMoney(totalBudget)}（已規劃 ${pct}%）</div>`:''}
   </div>
-
   <div class="section-header"><div class="section-title-sm">各旅程明細</div></div>
   <div class="cost-breakdown">`;
-
   state.trips.forEach(t => {
     const cost = tripCost(t);
-    html += `<div class="cost-row" style="cursor:pointer;" onclick="openTrip('${t.id}');showPage('detail');">
-      <div class="cost-row-left">
-        <span>${t.emoji || '🗺️'}</span>
-        <span>${t.dest}</span>
-        ${t.budget > 0 ? `<span class="badge badge-forest" style="font-size:10px;">預算 ${formatMoney(t.budget)}</span>` : ''}
-      </div>
+    html += `<div class="cost-row" onclick="openTrip('${t.id}');showPage('detail');">
+      <div class="cost-row-left"><span>${t.emoji||'🗺️'}</span><span>${t.dest}</span>${t.budget>0?`<span class="badge badge-forest" style="font-size:10px;">預算 ${formatMoney(t.budget)}</span>`:''}</div>
       <div class="cost-row-right">${formatMoney(cost)}</div>
     </div>`;
   });
-
   html += `</div>`;
   el.innerHTML = html;
 }
 
-// ── INIT ──
 renderTripList();
 </script>
 </body>
