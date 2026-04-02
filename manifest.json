@@ -1,0 +1,17 @@
+{
+  "name": "Wanderly 旅遊規劃",
+  "short_name": "Wanderly",
+  "description": "免費旅遊行程規劃 App",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FAF8F3",
+  "theme_color": "#C4754A",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
